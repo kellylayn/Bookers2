@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>User info</h2>
+  <div>
+    <div>image</div>
+    <p>name</p>
+    <h4><%= @user.name %></h4>
+  </div>
+  <div>
+    <p>introduction</p>
+    <p></p>
+  </div>
+  <% if @user == current_user %>
+    <a class="btn"><%= link_to "user edit",edit_user_path(@user) %></a>
+  <% end %>
+</div>
+
+<div class="container">
+  <h2>New book</h2>
+  <div>
+    <p>Title</p>
+    <div>box</div>
+    <p>Opinion</p>
+    <div>form</div>
+    <a class="btn">Create Book</a>
+  </div>
+</div>
