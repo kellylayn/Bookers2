@@ -1,0 +1,21 @@
+<div class="container">
+
+  <%= render 'users/info', user: @user %>
+
+</div>
+
+
+
+<div class="col-md-8 offset-md-1">
+  <h2>Users</h2>
+  <div>
+    <p>image</p>
+    <p>name</p>
+  </div>
+
+  <% @users.each do |user| %>
+    <p><%= image_tag user.get_profile_image, size: '100x100' %></p>
+    <p><%= user.name %></p>
+    <p><%= link_to "Show", user_path(user.id) %></p>
+  <% end %>
+</div>
