@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+
   def index
     @users = User.all
     @user = current_user
@@ -12,15 +14,16 @@ class UsersController < ApplicationController
   end
 
   def edit
-    is_matching_login_user
     @user = User.find(params[:id])
   end
 
   def update
-    is_matching_login_user
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
 
