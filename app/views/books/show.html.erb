@@ -1,16 +1,22 @@
 
+
 <div class="container">
-
-  <%= render 'users/info', user: @user %>
-
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/info', user: @user,book:@new_book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+    <h2>Book detail</h2>
+      <%= link_to user_path(@book.user.id) do %>
+        <p><%= image_tag @book.user.get_profile_image, size: '100x100' %></p>
+      <% end %>
+      <p><%= link_to @book.title, book_path(@book.id) %></p>
+      <p><%= @book.body %></p>
+      <% if @book.user == current_user %>
+        <%= link_to "Edit", edit_book_path(@book.id) %>
+        <%= link_to "Destroy", book_path, method: :delete %>
+      <% end %>
+    </div>
+      <p><%= link_to @book.user.name,user_path(@book.user.id) %></p>
+  </div>
 </div>
-
-<h2>Book detail</h2>
-<div>
-  <p><%= image_tag @book.user.get_profile_image, size: '100x100' %></p>
-  <p><%= link_to @book.title, book_path(@book.id) %></p>
-  <p><%= @book.opinion %></p>
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-  <%= link_to "Destroy", book_path, method: :delete %>
-</div>
-  <p><%= @book.user.name %></p>

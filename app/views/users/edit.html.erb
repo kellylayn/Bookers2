@@ -1,3 +1,11 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>error prohibited this obj from being saved:
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 
 <div class="container">
@@ -9,6 +17,6 @@
     <%= f.file_field :profile_image, accept: "image/*" %>
     <label for="inputIntroduction">Introduction</label>
     <%= f.text_area :introduction %>
-    <%= f.submit "変更を保存" %>
+    <%= f.submit "Update User" %>
   <% end %>
 </div>

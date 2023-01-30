@@ -1,23 +1,27 @@
-
-
 <div class="container">
+  <div class="row">
+    <div class="col-md-3">
 
-  <%= render 'users/info', user: @user %>
+      <%= render 'users/info', user: @user,book:@book %>
 
-</div>
+    </div>
 
 
 
-<div class="col-md-8 offset-md-1">
-  <h2>Books</h2>
-  <div>
-    <p>Title</p>
-    <p>Opinion</p>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <div>
+        <p>Title</p>
+        <p>Opinion</p>
+      </div>
+
+      <% @books.each do |book| %>
+      <%= link_to user_path(book.user.id) do %>
+        <p><%= image_tag book.user.get_profile_image, size: '80x80' %></p>
+      <% end %>
+        <p><%= link_to book.title, book_path(book.id) %></p>
+        <p><%= book.body %></p>
+      <% end %>
+    </div>
   </div>
-
-  <% @books.each do |book| %>
-    <p><%= image_tag book.user.get_profile_image, size: '100x100' %></p>
-    <p><%= link_to book.title, book_path(book.id) %></p>
-    <p><%= book.opinion %></p>
-  <% end %>
 </div>
