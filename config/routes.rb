@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'books' => 'books#index'
-  resources :books,only: [:index, :show, :create, :edit, :update, :destroy]
+  resources :books,only: [:index, :show, :create, :edit, :update, :destroy] do
+    resources :book_comments,only: [:create,:destroy]
+    resource :favorites,only: [:create,:destroy]
+  end
   get '/home/about' => 'homes#about', as: 'about'
   # get 'users' => 'users#index', as: 'users'
   # resources :post_images,only: [:new, :create, :index, :show, :destroy]
