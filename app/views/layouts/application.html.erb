@@ -12,8 +12,8 @@
 
 
   <body>
-    <header class="shadow-sm bg-dark">
-      <nav class="navbar navbar-expand-lg navbar-dark">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
         <div class="container">
           <a class="navbar-brand" href="/">
             <span>Bookers</span>
@@ -78,6 +78,11 @@
           </div>
         </div>
       </nav>
+      <div>
+        <div>
+          <%= render "/searches/search" %>
+        </div>
+      </div>
     </header>
     <main class="mb-auto">
       <%= flash[:notice] %>
