@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resource :favorites,only: [:create,:destroy]
   end
   get '/home/about' => 'homes#about', as: 'about'
-  get "search" => "searches#search"
+  get "/search" => "searches#search"
   # get 'users' => 'users#index', as: 'users'
   # resources :post_images,only: [:new, :create, :index, :show, :destroy]
   resources :users,only: [:index, :show, :edit, :update] do
